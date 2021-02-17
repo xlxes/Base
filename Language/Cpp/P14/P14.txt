@@ -1,0 +1,49 @@
+1.  公有提供has-a 关系 私有提供is-a关系
+公有
+私有
+公有
+私有
+人 ：  公有
+汽车：私有
+
+2. 包含直接通过对象调用类方法
+Gloam(int g,const char* s):glip(g),fb(s){}
+Gloam(int g,const Frabjous &f):glip(g),fb(s){}
+void Gloam::tell()
+{
+  fb.tell();
+  cout<<glip<<endl;
+}
+
+3. 私有继承通过基类名调用基类方法
+Gloam(int g,const char* s):glip(g),Frabjous (s){}
+Gloam(int g,const Frabjous &f):glip(g),Frabjous (s){}
+void Gloam::tell()
+{
+  Frabjous::tell();
+  cout<<glip<<endl;
+}
+
+4.模板类 给定具体类型时，将类型替换原声明中的模板进行声明
+class Stack<Worker *>
+{
+  private:
+	enum{MAX = 10};
+	Worker* items[MAX];
+	int top;
+  public:
+	Stack();
+	bool isempty();
+	bool isfull();
+	bool push(const Worker* & item);
+	bool pop(Worker* & item);
+}
+
+5.
+ArrayTP<string> sa;
+StackTP<ArrayTP<double>> stck_arr_db;
+ArrayTP<StackTP<Worker *>>arr_stk_wpr;
+生成了4个模板类定义
+
+6.
+如果两条继承路线有着相同的祖先，则类中将包含祖先成员的两个拷贝，将祖先类作为虚基类可以解决这种问题。

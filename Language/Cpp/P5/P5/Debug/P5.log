@@ -1,0 +1,4 @@
+﻿  P5.cpp
+c:\users\xwy\desktop\p5\p5\p5\p5.cpp(31): warning C4018: “<=”: 有符号/无符号不匹配
+c:\users\xwy\desktop\p5\p5\p5\p5.cpp(33): warning C4018: “<”: 有符号/无符号不匹配
+  P5.vcxproj -> C:\Users\xwy\Desktop\P5\P5\Debug\P5.exe

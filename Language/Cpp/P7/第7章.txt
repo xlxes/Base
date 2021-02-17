@@ -1,0 +1,109 @@
+1.
+1）提供函数定义
+2）提供函数原型
+3）调用函数
+
+2.
+void igor(void)
+float tofu(int n)
+double mpg(double i,double j)
+long summation(long harray[],int size)
+double doctor(const char* str)
+void ofcourse(boss duke)
+char* plot(map *pt)
+
+3.
+void set_array(int arr[],int size,int a)
+{
+	for(int i=0;i<size;i++)
+	  arr[i] = a;
+}
+
+4.
+void set_arry(int* beg;int* end;int a)
+{
+	for(int *pt=beg;pt!=end;pt++)
+	{
+		*pt = a;
+	}
+}
+
+5.
+double get_max(const double arr[],int size)
+{
+	double max;
+	if(size<1)
+		return 0;
+	else 
+	{
+		max = arr[0];
+		for(int i =0;i<size;i++)
+		{
+			if(arr[i]>max)
+				max = arr[i];
+		}
+		return max;
+	}
+}
+
+6.
+const 用于指针，防止指向的原始数据被修改，而基本数据常按值传递，创建副本以保护数据
+
+7.
+字符串可以存储在char数组中，可以用双引号的字符串表示，也可以用指向第一个字符的指针来表示
+
+8.
+int replace(char *str,char c1,char c2)
+{
+	int count = 0;
+	for(char* i = *str;*i!='\0';i++)
+	{
+		if(*i == c1)
+		{
+			*i = c2;
+			count ++;
+		}
+	}
+	return count; 
+}
+
+9.
+c++将"pizza"解释成第一个元素的地址，所以*“pizza”即是字符p;
+同理"taco"[2] 即为字符c
+
+10.
+按值传递即是传递数组名glitz即可，传递地址则要使用&glitz;
+按值传递可以自动保护原始数据，但是会牺牲时间和内存
+按地址传递则可以节省时间与内存，但是不能保护原始数据，除非使用const运算符，而且按值传递可以使用常规结构体运算符. 而按地址传递则只能使用间接运算符->来表示成员。
+
+11.
+int judge(int (*pf)(const char *))
+
+12.
+1)
+void show(applicant s)
+{
+	cout << s.name << endl;
+	for(int i=0;i<2;i++)
+	{
+		cout << s.credit_ratings[i] << endl;
+	}
+}
+
+2)
+void show(const applicant *sp)
+{
+	cout << sp->name << endl;
+	for(int i=0;i<2;i++)
+	{
+		cout << sp->credit_ratings[i] << endl;
+	}
+}
+
+13.
+typedef void (*p_f1)(applicant *)
+p_f1 p1 = f1;
+typedef const char* (*p_f2)(const applicant *,const applicant *);
+p_f2 p2 = f2;
+p_f1 ap[5];
+p_f2 (*pa)[10]; 

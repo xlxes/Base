@@ -1,0 +1,359 @@
+C基础知识点
+参考网址：https://www.runoob.com/cprogramming/c-data-types.html
+
+1.关键字；
+auto		声明自动变量
+break		跳出当前循环
+case		开关语句分支
+char		声明字符型变量或函数返回值类型
+const		定义常量，如果一个变量被 const 修饰，那么它的值就不能再被改变
+continue	结束当前循环，开始下一轮循环
+default		开关语句中的"其它"分支
+do			循环语句的循环体
+double		声明双精度浮点型变量或函数返回值类型
+else		条件语句否定分支（与 if 连用）
+enum		声明枚举类型
+extern		声明变量或函数是在其它文件或本文件的其他位置定义
+float		声明浮点型变量或函数返回值类型
+for			一种循环语句
+goto		无条件跳转语句
+if			条件语句
+int			声明整型变量或函数
+long		声明长整型变量或函数返回值类型
+register	声明寄存器变量
+return		子程序返回语句（可以带参数，也可不带参数）
+short		声明短整型变量或函数
+signed		声明有符号类型变量或函数
+sizeof		计算数据类型或变量长度（即所占字节数）
+static		声明静态变量
+struct		声明结构体类型
+switch		用于开关语句
+typedef		用以给数据类型取别名
+unsigned	声明无符号类型变量或函数
+union		声明共用体类型
+void		声明函数无返回值或无参数，声明无类型指针
+volatile	说明变量在程序执行中可被隐含地改变
+while		循环语句的循环条件
+
+c99新增；
+_Bool _Complex _Imaginary inline restrict
+
+c11新增：
+_Alignas _Alignof _Atomic _Generic _Noreturn _Static_assert _Thread_local
+
+2.标识符规则：
+以字母或下划线开始，后跟0个或多个字母、下划线、数字，可组成一个标识符
+
+3.数据类型
+基本类型：	整数类型、浮点类型
+枚举类型：	枚举类型
+void类型：	void
+派生类型：	指针类型、数组类型、结构类型、共用体类型、函数类型
+
+数据类型				32位	64位	取值范围（32位）
+char					1		1		-128~127
+unsigned char 			1		1		0~255
+short int /short		2		2		–32,768~32,767
+unsigned  short			2		2		0~65,535
+int						4		4		-2,147,483,648~2,147,483,647
+unsigned int			4		4		0~4,294,967,295
+long					4		4		-2,147,483,648~2,147,483,647
+long int /long			4		8		–2,147,483,648~2,147,483,647
+unsigned long			4		8		0~4,294,967,295
+long long int/long long	8		8		-9,223,372,036,854,775,808	
+指针　					4		8		~9,223,372,036,854,775,807
+float					4		4		3.4E +/- 38 (7 digits)
+double					8		8		1.7E +/- 308 (15 digits)
+
+*64位机下int和long一样4位 long long8位
+
+***
+(1)整数范围对有符号的会有0的区别，以char为例，一般认为0000 0000为0，1000 0000为-128
+(2)%lu为32位无符号整数 %E为以指数形式输出单、双精度实数
+(3)类型为void *的指针代表对象的地址，而不是类型,常用于malloc转为任何数据类型
+(4)struct的大小注意字节对齐问题
+(5)类的大小注意虚函数指针的问题
+(6)数组名使用sizeof时退化为指针大小
+
+4.变量、函数声明关键字
+extern作用：
+(1)当它与"C"一起连用时，如: extern "C" void fun(int a, int b);
+则告诉编译器在编译fun这个函数名时按着C的规则去翻译相应的函数名而不是C++的。因为c++支持重载而c不支持。
+(2)声明函数或全局变量的作用范围的关键字，其声明的函数和变量可以在本模块或其他模块中使用。
+static作用：
+(1)修饰全局变量，静态存储区，对文件外不可见
+(2)修饰局部变量，静态存储区，对函数范围外不可见，重新调用值不变
+(3)修饰函数，仅当前文件可见
+(4)修饰类成员，整个类对象共有
+(5)修饰类函数，整个类对象共有，可使用类名调用或函数名调用，但是不能使用类对象的非static成员变量,由于this指针的原因，无法找到指向的具体对象。
+
+5.字符串常量（转义字符）
+\\		\ 字符
+\'		' 字符
+\"		" 字符
+\?		? 字符
+\a		警报铃声
+\b		退格键
+\f		换页符
+\n		换行符
+\r		回车
+\t		水平制表符
+\v		垂直制表符
+\ooo	一到三位的八进制数
+\xhh	一个或多个数字的十六进制数
+
+6.存储类关键字
+auto 		所有局部变量默认的存储类int n等效 auto int n
+register	定义存储在寄存器中而不是 RAM 中的局部变量,用于快速访问如计数等
+static		指示编译器在程序的生命周期内保持局部变量的存在,具体见点4
+extern 		用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。具体见点4
+
+7.运算符
+算术运算符
+关系运算符
+逻辑运算符
+位运算符：
+&、|、^、~ 、<<、>>
+与、或、非（异或，不同为1）、取反、左移（补0）、右移（正数补0，负数补1）
+赋值运算符
+杂项运算符：
+运算符			描述				实例
+sizeof()		返回变量的大小。	sizeof(a) 将返回 4，其中 a 是整数。
+&				返回变量的地址。	&a; 将给出变量的实际地址。
+*				指向一个变量。		*a; 将指向一个变量。
+? :				条件表达式			如果条件为真 ? 则值为 X : 否则值为 Y	
+
+常见用法：
+用法
+1.掩码  	可以遮掩相应的位（设置为0）或取出期望的位, MASK设置特定位取1，其余取0，随后进行&操作
+2.打开位	1）设置MASK （特定位为1，其余为0） 2）flags = flags | MASK 或者 flags |= MASK
+3.关闭位	1）设置MASK （特定位为1，其余为0） 2）flags = flags & ~MASK
+4.切换位	关闭打开位，打开关闭位。 1）求得MASK （特定位为1，其余为0） 2）flags = flags ^ MASK
+5.检查某位是否为0		(flags&MASK) == MASK
+6.移位运算符 <<			a<<b 相等于a乘以2的b次幂
+			 >>			a>>b 相等于a除以2的b次幂求余
+
+
+运算符的优先级：以下从上到下，优先级逐渐降低，结合性表示同一优先级下如何运行
+类别		运算符								结合性
+后缀 		() [] -> . ++ - -  					从左到右 
+一元 		+ - ! ~ ++ - - (type)* & sizeof 	从右到左 
+乘除 		* / % 								从左到右 
+加减 		+ - 								从左到右 
+移位 		<< >> 								从左到右 
+关系 		< <= > >= 							从左到右 
+相等 		== != 								从左到右 
+位与AND 	& 									从左到右 
+位异或XOR 	^	 								从左到右 
+位或OR 		| 									从左到右 
+逻辑与AND 	&&	 								从左到右 
+逻辑或OR 	|| 									从左到右 
+条件 		?: 									从右到左 
+赋值 		= += -= *= /= %=>>= <<= &= ^= |= 	从右到左 
+逗号 		, 									从左到右
+
+8.数组
+(1)如果使用{}进行部分初始化，则剩余部分默认填为0；
+(2)C语言不允许返回一个完整的数组作为函数的参数,所以一般在外部构造数组，传入一个指向数组的指针
+(3)可以用一个同数据类型的指针指向一个数组的名字，即把首地址赋值给该指针
+(4)多维数组与指针
+int zippo[4][5];
+其中zippo是zippo[0]的地址 zippo[0]又是zippo[0][0]的地址
+zippo					//二维数组首元素的地址（每个元素内含2个int类型元素的一维数组）
+zippo+2					//二维数组的第三个元素的地址
+*（zippo+2）			//二维数组的第三个元素的首元素的地址
+*（zipp0+2）+1			//二维数组的第三个元素的第二个元素的地址
+*（*（zippo+2）+1）		//二维数组的第三个元素的第二个int类型的元素的值
+
+9.枚举
+enum season {spring, summer=3, autumn, winter};		//定义枚举类型
+enum season a;		//定义枚举变量
+//以上两步可以合并：
+enum season {spring, summer=3, autumn, winter} a;	//season枚举名称可以省略
+
+10.指针　
+(1)指针的递增会指向下一个元素的存储单元（用于数组）
+(2)指针数组int* ptr[MAX]
+(3)返回指针常用于static数组的返回
+(4)函数指针是指向函数的指针变量，例：
+int (* p)(int, int) = & max;	//后续可以用p来代替max
+void example(int *array, size_t size, int (*FuncName)(void))	//回调函数，在定义一个函数的时候用一个函数指针作为参数传入
+(5)递归
+在自定义函数中再次使用自身函数，结束递归的方式与条件是重点。
+*尾递归 
+将递归调用放在函数末尾即return前，相当于使用循环，但效率不高 要考虑内存的消耗情况。
+
+11.字符串（C风格）
+char test[] = "xwy";	//编译器在编译数组时自动把'\0'放在末尾
+char test[4] = {'x','w','y','\0'};
+注意：
+(1)字符串（以空字符\0结尾的char类型数组）(静态存储类别)
+%s 		打印字符串 
+%p 		打印地址
+%-36s 	打印36个字符，若没有填充空，主要用于对齐
+(2)相关输入输出函数
+scanf("%s",name)	
+gets();
+fgets();
+gets_s();
+s_gets();
+puts();				//只显示字符串，且在末尾加上换行符
+fputs();
+printf();
+getchar();
+putchar();			//当string指针指向空字符时，*string为0，常用while(*string)来做判断条件
+(3)定义字符串
+#define word "nice to meet you"
+char name[50] = "sky";
+char name[50] = "i say ,\"sky\"";
+const char *pi = "nice day";	//必加const 
+(4)地址
+char car[10] = "Tate";
+*car == 'T'
+*(car+1) == 'a'
+(5)使用数组定义多维数组时，存储区域为规则的,使用指针定义多维数组时。存储区域是不规则的指针的值即是其储存的地址，使用拷贝数组时最优的方式是使用指针直接传递地址
+(6)字符串函数
+strlen(str1)				//返回字符串长度，到\0停止,不算空字符
+strcat(str1,str2)			//用于拼接字符串，将第二个字符串的备份拼接在第一个字符串的末尾，将新字符串作为第一个字符串，返回其地址
+strncat(str1,str2,n)		//上述拼接无法检查第一个字符串能否容纳拼接后的字符串，n表示允许添加的最大字符数
+strcmp(str1,str2)			//比较字符串，相同返回0，不同返回非0值，该非零值为后项ASCII码减前项值
+strncmp(str1,str2,n)		//n表示只比较到第n个字符
+strcpy(str1[0],str2)		//将第二个字符串复制到第一个内
+strncpy(str1[0],str2,n)		//n表示可拷贝的最大字符数
+(7)排序问题
+避免将指针进行排序，而非字符串排序，使用strcpy()构建两个相同字符串。
+(8)字符串与数字转换
+atoi() 			//该函数接收一个字符串为参数，返回相应的整数值int
+atof()			//字符串转double
+atol()			//字符串转long
+strtol()		//字符串转long
+strtoul()		//字符串转unsigned long
+strtod()		//字符串转double
+
+12.结构体
+(1)注意字节对齐，规则是从小到大申明变量
+(2)如果结构体a没有标签，b有，尽管他们的成员一致，也不是一个结构体
+(3)申明处最后的分号不能忘
+(4)初始化，以链表节点为例子
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+
+13.共用体
+使用方法与结构体一致，访问成员使用.，使用的主要原因是节省内存，不考虑内存大小情况下不要使用该方法，老老实实用结构体
+union Data
+{
+   int i;
+   float f;
+   char  str[20];
+};
+union Data data;
+
+14.位阈
+struct
+{
+  unsigned int widthValidated : 1;	
+  unsigned int heightValidated : 1;
+} status2;	//大小为4
+同时，widthValidated只能存储一位大小的数据，超过则会截断，同时编译告警。也是对于内存有严格控制场景下使用的。
+
+15.typedef
+为一个类型取一个新名字，最常用的
+typedef unsinged int uint;
+typedef long long ll;
+注意：
+typedef 仅限于为类型定义符号名称，#define 不仅可以为类型定义别名，也能为数值定义别名，比如您可以定义 1 为 ONE。
+*由于define仅仅是替换，所以#define long long ll是会报错的
+typedef 是由编译器执行解释的，#define 语句是由预编译器进行处理的。
+
+16.文件输入输出
+(1)输入输出
+#include <stdio.h>	//c头文件
+char *gets(char *s) 	//函数从 stdin 读取一行到 s 所指向的缓冲区，直到一个终止符或 EOF。
+int puts(const char *s) //函数把字符串s和一个尾随的换行符写入到 stdout。
+int getchar(void)		//函数从屏幕读取下一个可用的字符，并把它返回为一个整数。
+int putchar(int c)		//函数把字符输出到屏幕上，并返回相同的字符。可以不处理返回值
+int scanf(const char *format, ...) 	//函数从标准输入流 stdin 读取输入，并根据提供的 format 来浏览输入。
+int printf(const char *format, ...) //函数把输出写入到标准输出流 stdout ，并根据提供的格式产生输出。
+
+(2)文件I/O函数
+FILE *fopen( const char * filename, const char * mode );	//mode为打开方式，返回一个文件描述符
+int fclose( FILE *fp );			//关闭文件描述符
+int fputc( int c, FILE *fp );	//把参数c的字符值写入到 fp 所指向的输出流中，成功返回非负值，错误返回EOF
+int fputs( const char *s, FILE *fp );			//把字符串 s 写入到 fp 所指向的输出流中
+int fprintf(FILE *fp,const char *format, ...) 	//同上
+int fgetc( FILE * fp );							//从 fp 所指向的输入文件中读取一个字符。返回值是读取的字符，错误返回EOF
+char *fgets( char *buf, int n, FILE *fp );		//从fp读取n-1个字符。复制到缓冲区 buf，并在最后追加一个null字符来终止字符串
+其他不常用
+fseek()
+ftell()
+fgetpos()
+fsetpos()
+其他标准I/O函数
+int ungetc(int c,FILE *FP)
+int fflush()
+int setvbuf()
+二进制I/O
+size_t fread(void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);
+size_t fwrite(const void *ptr, size_t size_of_elements, size_t number_of_elements, FILE *a_file);
+int feof(FILE *fp)
+int ferror(FILE *fp)
+
+17.预处理器
+防止头文件重复包含
+#ifndef	A
+#define	A
+#endif
+取消原定义
+#undef  B
+#define B 42
+一行太长用\换行
+#define MAX(x,y) ((x) > (y) ? (x) : (y))	//带参数宏，MAX和(之间不能有空格，毕竟是替换
+
+18.类型转换与错误处理
+int/int得到int,类型转换的优先级大于除法
+转换规则
+char,short->int->unsigned->long->(float)->double
+除法：检查除数是不是0
+
+19.内存管理
+头文件：stdlib.h
+void *calloc(int num, int size);			//动态分配num个size大小字节的内存，值为0
+void free(void *address);					//释放指向的内存块
+void *malloc(int num);						//分配大小为num的内存，值未知
+void *realloc(void *address, int newsize);	//重新分配内存大小
+//void*类型表示未确定类型的指针，可以通过类型转换强制转换为任何其它类型的指针。
+
+20.可变参数
+头文件：stdarg.h
+在定义函数的时候，允许接受可变数量的参数，定义如下：
+int func(int,...)
+访问方法：
+使用特定类型va_list的变量来存储各个数据，使用va_start来初始化va_list，使用va_arg来遍历va_list
+例子：第一个参数表示参数的个数
+double average(int num,...){
+    va_list valist;	//申明一个列表存储数据
+    double sum = 0.0;
+    // 为num个参数初始化valist
+    va_start(valist, num);
+    // 访问所有赋给 valist 的参数
+    for (int i = 0; i < num; i++){
+       sum += va_arg(valist, int);
+    }
+    // 清理为 valist 保留的内存
+    va_end(valist);
+    return sum/num;
+}
+//总而言之函数需要确定传入数据的个数才能初始化数据列表
+
+
+21.命令行参数
+int main(int argc, char *argv[])
+argc是指传入参数的个数，argv[]是一个指针数组，指向传递给程序的每个参数
+argv[0]存储程序的名称，argv[1]是一个指向第一个命令行参数的指针
+换言之，不传入任何参数argc为1
+
+
+

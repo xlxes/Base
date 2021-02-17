@@ -1,0 +1,55 @@
+1.
+类是用户自定义的类型的定义，类声明指定了数据如何存储，同时指定了用来访问和操作这些数据的方法（类成员函数）。
+
+2.
+类表示人们可以使用类方法的共有接口来对类对象执行操作，这是抽象。类的数据成员可以是私有的，这意味着只能通过成员函数来访问这些数据这是数据隐藏，实现的具体细节都是隐藏的，这是封装。
+
+3.
+类只是定义了一种类型，包括了如何使用它。对象是一个变量或其他数据对象（如由new生成的），并根据类定义被创建和使用，类和对象之间的关系如同标准类型和其变量之间的关系。
+
+4.
+如果创建给定类的多个对象，则每个对象都有其自己的数据存储空间；但是所有的对象都使用同一组成员函数（通产数据是私有的，但是方法是公有的，但这只是策略方面，而不是对类的要求）
+
+5.
+#include <string>
+
+using namespace std;
+
+class BankAccount
+{
+    private:
+	string name;
+	string acctnum;
+	double balance;
+    public:
+	BankAccount(const string& client, const string& num, double bal = 0.0)；	//构造函数 
+	~BankAccount();	//析构函数
+	void show(void) const;
+	void deposit(double cash);
+	void withdraw(double cash);
+}；
+
+6.
+在创建类对象或者显式调用构造函数的时候，类的构造函数都会被调用。当类对象过期时，类的析构函数将被调用。
+
+7.
+BankAccount::BankAccount(const string& client, const string& num, double bal)
+{
+    name = client;
+    acctnum = num;
+    balance = bal;
+}
+
+8.
+默认构造函数是没有参数或所有参数都有默认值的构造函数，拥有默认构造函数之后，可以声明对象，而不初始化它，即使已经定义了初始化构造函数。它还使得能够声明数组。
+
+9.
+在类的定义中，公有部分，添加如下语句：
+
+int numshares() const {return shares;}
+double shareval() const {return share_val;}
+double totalval() const {return total_val;}
+const string & co_name() const {return company;}
+
+10.
+this 指针是类方法可以使用的指针，它指向用于调用方法的对象。因此，this是对象的地址，而*this 是对象本身。

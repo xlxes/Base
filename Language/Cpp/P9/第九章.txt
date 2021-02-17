@@ -1,0 +1,35 @@
+1.
+（a）homer将自动成为自动变量
+（b）在一个文件中定义secret为外部变量，而在另一个文件中使用extern来声明
+（c）可以在外部定义前加上static，将topsecret定义为一个有内部链接的静态变量.也可以在一个未命名的名称空间中进行定义
+（d）应在函数声明前加上关键字static,将beencalled定义为一个本地静态变量
+
+2.
+using 声明使得名称空间中的单个名称可用，其作用域与using 所在的声明区域相同，using编译指的是使命名空间内的所有名称均可用。使用using编译指令时，就像在一个包含using声明和命名空间本身的最小声明区域中声明了这些名称一样。
+
+3.
+删除using namespace std，将所有的cin\cout\endl均改为std::cin的模式
+
+4.
+删除using namespace std，在main函数中加上
+using std::cin;
+using std::cout;
+using std::endl;
+
+5.
+可以在每个文件中包含单独的静态函数定义，或者每个文件都在未命名的名称空间中定义一个合适的average()函数。
+
+6.
+10
+4
+0
+Other : 10，1
+anther(): 10,-4
+
+7.
+1
+4,1,2
+2
+2
+4,1,2
+2

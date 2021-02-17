@@ -1,0 +1,29 @@
+1.不同的整型大小不一，选择适当的整型能加快程序运算效率，减少内存占用
+2.
+	short i = 80;
+	unsigned int i = 42110;
+	long long i = 300000000;
+3.没有提供自动防止超限的功能，可使用头文件climits限制，其中包含的符号常量可显示限制长度
+4. 33L表示浮点常量33类型为long double,而33表示常量 为int型
+5.某种程度上来说是等效的，但是是指使用ASCII码时，而且65为int常量，'A'为char常量
+6.
+cout<<char(88)<<endl;
+cout<<(char)88<<endl;
+cout.put(char(88));
+char c;
+cout<<c;
+7.long 10位 double 13位 long long 19位
+8.
+a. 74
+b. 4
+c. 0
+d. 4.5
+e. 3
+9.	int sum = (int)x1 + (int)x2; 或 int sum = int(x1) + int(x2);
+	int sum = int(x1+x2); 或 int sum = (int)(x1+x2);
+10.
+int
+float
+char
+char32_t
+double	

@@ -1,0 +1,6 @@
+﻿  sales.cpp
+c:\users\xwy\desktop\p9\p9\p9\sales.cpp(14): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\xwy\desktop\p9\p9\p9\sales.cpp(22): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\xwy\desktop\p9\p9\p9\sales.cpp(33): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\xwy\desktop\p9\p9\p9\sales.cpp(44): warning C4018: “<”: 有符号/无符号不匹配
+  P9.vcxproj -> C:\Users\XWY\Desktop\P9\P9\Debug\P9.exe

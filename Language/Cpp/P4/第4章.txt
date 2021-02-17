@@ -1,0 +1,64 @@
+复习题
+1.
+char actor[30];
+short betsie[100];
+float chuck[13];
+long double dipsea[64];
+2.
+array<char,30> actor;
+array<short,100> betsie;
+array<float,13> chuck;
+array<long double,64> dipsea;
+3.
+int a[5] = {1,3,5,7,9};
+4.
+int even = a[0]+a[4];
+5.
+cout << ideas[1]<<endl; 
+6.
+char a[13] = "cheeseburger";
+7.
+string a = "Waldorf Salad";
+8.
+struct fish
+{
+	string kind;  //或者 char kind[30];
+	int weight;
+	float  size;
+};
+9.
+fish luyu ={"鲈鱼",15,12.3};
+10.
+enum Response {No,Yes,Maybe};
+11.
+double *pt = &ted;
+cout << *pt
+12.
+float *pt = treacle;
+cout<<*pt<<endl<<*(pt+9);	//或者pt[0] pt[9]
+13.
+int a;
+cin>>a;
+int *b = new int [a]; //vector<int> b(a);
+14.
+有效，打印内容为字符串的地址
+15.
+struct fish
+{
+	char kind[30];
+	int weight;
+	float  size;
+};
+fish *pole = new flsh;
+cout << pole->kind << pole->weight << pole->size;
+16.
+cin.getline() //读取整行，遇到回车时停下，丢弃换行符
+cin.get()	  //读取整行，遇到回车时停下，保存换行符
+cin			  //读取一个单词，忽略开始的空白格，从非空白格字符串开始读取，再次遇到空白就会停下，会忽略回车
+17.
+#include “array”
+#include "vector"
+#include "string"
+const int num = 10;
+std::array<std::string,num> a;
+std::vector<std::string> b(num);

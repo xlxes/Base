@@ -1,0 +1,15 @@
+1.下载一个"pi3-miniuart-bt-overlay"文件并将其拷贝至/boot/overlays文件夹中
+2.sudo systemctl disable hciuart //关闭蓝牙
+
+
+cmdline.txt如下
+dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1  root=PARTUUID=f029fa11-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait modules-load=dwc2,g_ether
+
+
+config.txt如下
+dtparam=audio=on
+dtoverlay=dwc2
+dtoverlay=pi3-miniuart-bt-overlay
+enable_uart=1
+
+注意：最后使用的串口名为ttyAMA0

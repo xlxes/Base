@@ -1,0 +1,45 @@
+1.
+两个版本的结果相同，但是第一个版本需要两个if，第二个版本使用if-else，第二个版本的效率更高
+2.
+ch+1与++ch数值相同，但是ch+1会转化为int型作为数值打印，++ch会转换为char类型作为字符串打印
+3.
+输入：Hi!
+输出：H$i$!$
+输入：$Send $10 or $20 now!
+输出：S$e$n$d$ $ct1 = 9, ct2 = 9
+4.
+a.weight>=115&&weight<125
+b.ch=='q'||ch =='Q'
+c.(x%2==0)&&(x!=26)
+d.(x%2==0)&&((x%26)!=0)
+e.(donation<=2000&&donation>=1000)||(guest==1)
+f.(ch>='a'&&ch<='z')||(ch>='A'&&ch<='Z')
+5.
+不一定，如果x为10，则！！x为1;如果为bool型则相同
+6.
+(x>=0)? x:-x;
+7.
+swicth(ch)
+{
+	case 'A':a_grade++;
+			 break;
+	case 'B':b_grade++;
+			 break;
+	case 'C':c_grade++;
+			 break;
+	case 'D':d_grade++;
+			 break;
+	default: f_grade++;
+			 break;
+}
+8.
+使用整数标签，且用户输出了非整数，则程序因不能处理而挂起；
+使用字符标签，若输入整数，则整数当字符处理，然后转到switch的default
+9.
+int line = 0;
+char ch;
+while(cin.get(ch)||ch!='Q')
+{
+	if(ch == '\n')
+	line++;
+}

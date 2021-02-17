@@ -1,0 +1,22 @@
+#git本地命令
+git add . 					//提交该文件夹的修改 如果不用git add到暂存区，那就不会加入到commit中。
+git add filename 			//提交该文件的修改
+git commit -m "修改信息"	 //提交修改说明
+git status					//查询当前仓库的状态
+git diff HEAD -- readme.txt	//可以查看当前修改了文件哪些地方
+git log 					//查看历史版本修改信息
+git log --pretty=online 	//单行显示 前面数字为commit_id
+git reset --hard commit_id	//回退或者前进到某个版本
+git reset --hard HEAD^		//回退到上一版本 HEAD指当前版本，而HAED^指上一版本
+git reset HEAD readme.txt	//add之后commit之前，执行可撤销add操作，也可撤销rm命令，只是不能补全
+git reflog 					//查看命令历史，确定版本号，方便回退
+git checkout -- readme.txt	//当文件修改之后在add之前使用，可撤销文件修改
+							//当add之后文件又有修改，则可同样可撤销文件修改
+git rm readme.txt			//当文件被删除之后，执行该命令从版本库中删除
+
+
+#git 远程连接github命令步骤
+1.远程端新建库
+2.git remote add origin git@github.com:xlxes/Demo.git
+3.git push origin master 	//如远端有改变可以使用+master
+#当使用ssh直接clone下来仓库之后可以直接使用git push推送,而不需要1、2步骤
